@@ -25,6 +25,10 @@ const data = {
         {
             "title": "youtube",
             "href": "https://www.youtube.com"
+        },
+        {
+            "title": "github",
+            "href": "https://www.github.com"
         }
 
     ],

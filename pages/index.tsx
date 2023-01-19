@@ -24,7 +24,7 @@ const Home: NextPage = () => {
       </div>
 
       <h2 className='text-5xl font-bold pb-5 text-center'>Welcome to <span className='text-green-300 underline decoration-yellow-200 '>EggNest</span></h2>
-      <p className='w-2/4 text-center'>I decided to build a <a className='text-green-300 hover:underline decoration-yellow-200' href="https://linktr.ee">linktr.ee</a> clone, but I also decide to do something new, so this is what I built as a clone.</p>
+      <p className='w-2/4 text-center'>I decided to build a <a className='text-green-300 hover:underline decoration-yellow-200' href="https://linktr.ee">linktr.ee</a> clone, but I also wanted to do something new, so this is what I built as a clone.</p>
 
       <div id="authenticate" className="flex flex-col bg-gray-700 rounded-lg shadow-lg p-8 my-5">
         <h2>Create <span className='text-green-300'>Nest</span> using your <span className='text-green-300'>Bird</span> account</h2>
