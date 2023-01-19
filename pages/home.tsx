@@ -6,7 +6,7 @@ import { SiTiktok } from "react-icons/si"
 
 const EggNest = () => {
     return (
-        <div>
+        <div className=''>
             <div id="profileCard" className="flex justify-center items-center flex-col">
                 <div className='w-[100px] h-[100px] mt-20'>
                     <Image
@@ -33,6 +33,16 @@ const EggNest = () => {
                             {social.title === "youtube" && <a href={social.href}><div className='w-[45px] mx-2 px-1 invert'><img src="/youtube.png" alt="youtube" /></div></a>}
                             {social.title === "facebook" && <a href={social.href}><SlSocialFacebook className='text-4xl mx-2 px-1' /></a>}
                             {social.title === "linkedin" && <a href={social.href}><SlSocialLinkedin className='text-4xl mx-2 px-1' /></a>}
+                        </div>
+                    )
+                })}
+            </div>
+
+            <div id="links" className="flex flex-col w-3/4 items-center justify-center mx-auto">
+                {data.links.map((link, index) => {
+                    return (
+                        <div key={index} className="py-5 w-full bg-gray-700 uppercase font-medium rounded-lg flex items-center justify-center my-2">
+                            {link.title}
                         </div>
                     )
                 })}
