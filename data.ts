@@ -1,5 +1,5 @@
 const data = {
-    "username": "@gauravvan",
+    "username": "@EggNest",
     "avatar": "/eggnest.png",
     "socials": [
         {

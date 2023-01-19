@@ -1,12 +1,12 @@
 import React from 'react'
 import data from '../data'
 import Image from 'next/image'
-import { SlSocialInstagram, SlSocialTwitter, SlSocialFacebook, SlSocialLinkedin } from "react-icons/sl"
+import { SlSocialInstagram, SlSocialYoutube, SlSocialTwitter, SlSocialFacebook, SlSocialLinkedin } from "react-icons/sl"
 import { SiTiktok } from "react-icons/si"
 
 const EggNest = () => {
     return (
-        <div className=''>
+        <div className='mb-20'>
             <div id="profileCard" className="flex justify-center items-center flex-col">
                 <div className='w-[100px] h-[100px] mt-20'>
                     <Image
@@ -27,22 +27,24 @@ const EggNest = () => {
                 {data.socials.map((social, index) => {
                     return (
                         <div key={index} className="flex cursor-pointer">
-                            {social.title === "instagram" && <a href={social.href}><SlSocialInstagram className='text-4xl mx-2 px-1' /></a>}
-                            {social.title === "tiktok" && <a href={social.href}><SiTiktok className='text-4xl mx-2 px-1' /></a>}
-                            {social.title === "twitter" && <a href={social.href}><SlSocialTwitter className='text-4xl mx-2 px-1' /></a>}
-                            {social.title === "youtube" && <a href={social.href}><div className='w-[45px] mx-2 px-1 invert'><img src="/youtube.png" alt="youtube" /></div></a>}
-                            {social.title === "facebook" && <a href={social.href}><SlSocialFacebook className='text-4xl mx-2 px-1' /></a>}
-                            {social.title === "linkedin" && <a href={social.href}><SlSocialLinkedin className='text-4xl mx-2 px-1' /></a>}
+                            {social.title === "instagram" && <a href={social.href}><SlSocialInstagram className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                            {social.title === "tiktok" && <a href={social.href}><SiTiktok className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                            {social.title === "twitter" && <a href={social.href}><SlSocialTwitter className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                            {social.title === "youtube" && <a href={social.href}><SlSocialYoutube className='text-5xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                            {social.title === "facebook" && <a href={social.href}><SlSocialFacebook className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                            {social.title === "linkedin" && <a href={social.href}><SlSocialLinkedin className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
                         </div>
                     )
                 })}
             </div>
 
-            <div id="links" className="flex flex-col w-3/4 items-center justify-center mx-auto">
+            <div id="links" className="flex flex-col md:w-2/3 items-center justify-center mx-auto">
                 {data.links.map((link, index) => {
                     return (
-                        <div key={index} className="py-5 w-full bg-gray-700 uppercase font-medium rounded-lg flex items-center justify-center my-2">
-                            {link.title}
+                        <div key={index} className="py-4 cursor-pointer hover:text-green-300 hover:scale-x-105 font-mono tracking-widest transition-transform duration-200 w-full bg-gray-700 uppercase font-semibold shadow-md rounded-lg flex items-center justify-center my-2">
+                            <a href={link.href}>
+                                {link.title}
+                            </a>
                         </div>
                     )
                 })}
