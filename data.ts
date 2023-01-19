@@ -26,6 +26,7 @@ const data = {
             "title": "youtube",
             "href": "https://www.youtube.com"
         }
+
     ],
     "links": [
         {
@@ -53,6 +54,31 @@ const data = {
             "href": "https://www.youtube.com"
         }
     ]
+
+    //     {
+    //     "title": "twitter",
+    //         "href": "https://twitter.com"
+    // },
+    // {
+    //     "title": "facebook",
+    //         "href": "https://www.facebook.com"
+    // },
+    // {
+    //     "title": "instagram",
+    //         "href": "https://www.instagram.com"
+    // },
+    // {
+    //     "title": "linkedin",
+    //         "href": "https://www.linkedin.com"
+    // },
+    // {
+    //     "title": "tiktok",
+    //         "href": "https://tiktok.com"
+    // },
+    // {
+    //     "title": "youtube",
+    //         "href": "https://www.youtube.com"
+    // }
 }
 
 export default data;

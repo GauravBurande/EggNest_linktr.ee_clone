@@ -8,7 +8,7 @@ const Home: NextPage = () => {
       <div>
 
       </div>
-      <Link href={"/home"}>go to home</Link>
+      <Link href={"/eggnest"}>go to nest</Link>
     </div>
   )
 }
