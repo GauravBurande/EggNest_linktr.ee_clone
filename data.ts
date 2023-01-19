@@ -19,10 +19,6 @@ const data = {
             "href": "https://www.linkedin.com"
         },
         {
-            "title": "tiktok",
-            "href": "https://tiktok.com"
-        },
-        {
             "title": "youtube",
             "href": "https://www.youtube.com"
         },
@@ -50,8 +46,8 @@ const data = {
             "href": "https://www.linkedin.com"
         },
         {
-            "title": "tiktok",
-            "href": "https://tiktok.com"
+            "title": "github",
+            "href": "https://github.com"
         },
         {
             "title": "youtube",
@@ -76,8 +72,8 @@ const data = {
     //         "href": "https://www.linkedin.com"
     // },
     // {
-    //     "title": "tiktok",
-    //         "href": "https://tiktok.com"
+    //     "title": "github",
+    //         "href": "https://github.com"
     // },
     // {
     //     "title": "youtube",

@@ -2,7 +2,6 @@ import React from 'react'
 import data from '../data'
 import Image from 'next/image'
 import { SlSocialInstagram, SlSocialYoutube, SlSocialTwitter, SlSocialFacebook, SlSocialLinkedin } from "react-icons/sl"
-import { SiTiktok } from "react-icons/si"
 import { BsPlusLg } from "react-icons/bs"
 import { CgEditUnmask } from "react-icons/cg"
 import { IoShareOutline } from "react-icons/io5"
@@ -36,7 +35,6 @@ const EggNest = () => {
                         return (
                             <div key={index} className="flex cursor-pointer">
                                 {social.title === "instagram" && <a href={social.href}><SlSocialInstagram className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
-                                {social.title === "tiktok" && <a href={social.href}><SiTiktok className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
                                 {social.title === "twitter" && <a href={social.href}><SlSocialTwitter className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
                                 {social.title === "youtube" && <a href={social.href}><SlSocialYoutube className='text-5xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
                                 {social.title === "facebook" && <a href={social.href}><SlSocialFacebook className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
@@ -85,16 +83,16 @@ const EggNest = () => {
                     </div>}
             </div>
 
-            <div className='fixed flex top-28 group right-2 md:right-16'>
+            <div className='absolute flex top-28 group right-5 md:right-16'>
                 <p className='text-sm bg-gray-600 px-2 py-1 h-fit my-auto mr-2 opacity-0 rounded-md group-hover:opacity-80'>edit socials</p>
                 <div className='bg-gray-700 w-fit mx-auto hover:bg-green-300 hover:text-black hover:shadow-xl hover:scale-105 transition-transform duration-200 hover:rotate-180 rounded-full p-4 cursor-pointer'>
                     <Link href={"/addsocials"}>
-                        <CgEditUnmask className='text-xl' />
+                        <CgEditUnmask />
                     </Link>
                 </div>
             </div>
 
-            <div className='fixed flex top-10 group right-2 md:right-16'>
+            <div className='absolute flex top-10 group right-5 md:right-16'>
                 <p className='text-sm bg-gray-600 px-2 py-1 h-fit my-auto mr-2 opacity-0 rounded-md group-hover:opacity-80'>lay an egg</p>
                 <div className='bg-gray-700 w-fit mx-auto hover:bg-green-300 hover:text-black hover:shadow-xl hover:scale-105 transition-transform duration-200 hover:rotate-180 rounded-full p-4 cursor-pointer'>
                     <Link href={"/layanegg"}>
