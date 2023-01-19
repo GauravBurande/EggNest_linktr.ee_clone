@@ -3,12 +3,18 @@ import data from '../data'
 import Image from 'next/image'
 import { SlSocialInstagram, SlSocialYoutube, SlSocialTwitter, SlSocialFacebook, SlSocialLinkedin } from "react-icons/sl"
 import { SiTiktok } from "react-icons/si"
+import { BsPlusLg } from "react-icons/bs"
+import { CgEditUnmask } from "react-icons/cg"
+import { IoShareOutline } from "react-icons/io5"
 import Link from 'next/link'
 
 const EggNest = () => {
     return (
         <div className='mb-20'>
-            <div id="profileCard" className="flex justify-center items-center flex-col">
+            <div id="profileCard" className="relative flex justify-center items-center flex-col">
+                <div className='absolute top-14 left-0 md:left-32'>
+                    <IoShareOutline className='text-2xl cursor-pointer' />
+                </div>
                 <div className='w-[100px] h-[100px] mt-20'>
                     <Image
                         src={data.avatar}
@@ -58,6 +64,7 @@ const EggNest = () => {
                         )
                     })
 
+
                     : <div className='w-full'>
                         <div className='flex items-center justify-center py-0'>
                             <Image
@@ -74,6 +81,24 @@ const EggNest = () => {
                             <Link href={"/layanegg"}>Lay an egg</Link>
                         </div>
                     </div>}
+            </div>
+
+            <div className='fixed flex top-28 group right-2 md:right-16'>
+                <p className='text-sm bg-gray-600 px-2 py-1 h-fit my-auto mr-2 opacity-0 rounded-md group-hover:opacity-80'>edit socials</p>
+                <div className='bg-gray-700 w-fit mx-auto hover:bg-green-300 hover:text-black hover:shadow-xl hover:scale-105 transition-transform duration-200 hover:rotate-180 rounded-full p-4 cursor-pointer'>
+                    <Link href={"/addsocials"}>
+                        <CgEditUnmask className='text-xl' />
+                    </Link>
+                </div>
+            </div>
+
+            <div className='fixed flex top-10 group right-2 md:right-16'>
+                <p className='text-sm bg-gray-600 px-2 py-1 h-fit my-auto mr-2 opacity-0 rounded-md group-hover:opacity-80'>lay an egg</p>
+                <div className='bg-gray-700 w-fit mx-auto hover:bg-green-300 hover:text-black hover:shadow-xl hover:scale-105 transition-transform duration-200 hover:rotate-180 rounded-full p-4 cursor-pointer'>
+                    <Link href={"/layanegg"}>
+                        <BsPlusLg />
+                    </Link>
+                </div>
             </div>
         </div>
     )
