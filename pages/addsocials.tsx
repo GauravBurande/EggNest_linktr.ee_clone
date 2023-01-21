@@ -9,34 +9,30 @@ const AddSocials = () => {
                     <p>leave blank if you don't have an account</p>
                 </div>
 
-                <div className='py-12 px-56 mt-10 w-3/4 mx-auto bg-gray-800 rounded-md shadow-lg'>
+                <div className='py-12 flex flex-col items-center justify-center mt-10 bg-gray-800 rounded-md shadow-lg'>
                     <div className=''>
-                        <h3 className='py-3 text-yellow-100 uppercase'>Instagram</h3>
-                        <input className='w-full focus:scale-x-105 transition-transform duration-200 outline-none p-2 text-lg bg-gray-700' type="text" />
+                        <h3 className='py-3 font-mono tracking-widest text-yellow-100 uppercase'>Instagram</h3>
+                        <input className='w-[50vw] focus:scale-x-105 transition-transform duration-200 outline-none p-2 text-lg bg-gray-700' type="text" />
                     </div>
                     <div className=''>
-                        <h3 className='py-3 text-yellow-100 uppercase'>tiktok</h3>
-                        <input className='w-full focus:scale-x-105 transition-transform duration-200 outline-none p-2 text-lg bg-gray-700' type="text" />
+                        <h3 className='py-3 font-mono tracking-widest text-yellow-100 uppercase'>twitter</h3>
+                        <input className='w-[50vw] focus:scale-x-105 transition-transform duration-200 outline-none p-2 text-lg bg-gray-700' type="text" />
                     </div>
                     <div className=''>
-                        <h3 className='py-3 text-yellow-100 uppercase'>twitter</h3>
-                        <input className='w-full focus:scale-x-105 transition-transform duration-200 outline-none p-2 text-lg bg-gray-700' type="text" />
+                        <h3 className='py-3 font-mono tracking-widest text-yellow-100 uppercase'>youtube</h3>
+                        <input className='w-[50vw] focus:scale-x-105 transition-transform duration-200 outline-none p-2 text-lg bg-gray-700' type="text" />
                     </div>
                     <div className=''>
-                        <h3 className='py-3 text-yellow-100 uppercase'>youtube</h3>
-                        <input className='w-full focus:scale-x-105 transition-transform duration-200 outline-none p-2 text-lg bg-gray-700' type="text" />
+                        <h3 className='py-3 font-mono tracking-widest text-yellow-100 uppercase'>facebook</h3>
+                        <input className='w-[50vw] focus:scale-x-105 transition-transform duration-200 outline-none p-2 text-lg bg-gray-700' type="text" />
                     </div>
                     <div className=''>
-                        <h3 className='py-3 text-yellow-100 uppercase'>facebook</h3>
-                        <input className='w-full focus:scale-x-105 transition-transform duration-200 outline-none p-2 text-lg bg-gray-700' type="text" />
+                        <h3 className='py-3 font-mono tracking-widest text-yellow-100 uppercase'>linkedin</h3>
+                        <input className='w-[50vw] focus:scale-x-105 transition-transform duration-200 outline-none p-2 text-lg bg-gray-700' type="text" />
                     </div>
                     <div className=''>
-                        <h3 className='py-3 text-yellow-100 uppercase'>linkedin</h3>
-                        <input className='w-full focus:scale-x-105 transition-transform duration-200 outline-none p-2 text-lg bg-gray-700' type="text" />
-                    </div>
-                    <div className=''>
-                        <h3 className='py-3 text-yellow-100 uppercase'>github</h3>
-                        <input className='w-full focus:scale-x-105 transition-transform duration-200 outline-none p-2 text-lg bg-gray-700' type="text" />
+                        <h3 className='py-3 font-mono tracking-widest text-yellow-100 uppercase'>github</h3>
+                        <input className='w-[50vw] focus:scale-x-105 transition-transform duration-200 outline-none p-2 text-lg bg-gray-700' type="text" />
                     </div>
                 </div>
             </div>
