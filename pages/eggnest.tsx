@@ -4,15 +4,46 @@ import Image from 'next/image'
 import { SlSocialInstagram, SlSocialYoutube, SlSocialTwitter, SlSocialFacebook, SlSocialLinkedin } from "react-icons/sl"
 import { BsPlusLg } from "react-icons/bs"
 import { CgEditUnmask } from "react-icons/cg"
+import { FiGithub } from "react-icons/fi"
 import { IoShareOutline } from "react-icons/io5"
+import { MdOutlineContentCopy } from "react-icons/md"
 import Link from 'next/link'
+import { toast, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 const EggNest = () => {
+
+    const copied = () => {
+        toast.success('Link copied to clipboard✨', {
+            position: "bottom-left",
+            autoClose: 500,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+        });
+    }
+
     return (
         <div className='mb-20'>
+            <ToastContainer
+                position="bottom-left"
+                autoClose={500}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+            />
             <div id="profileCard" className="relative flex justify-center items-center flex-col">
-                <div className='absolute top-14 left-0 md:left-32'>
-                    <IoShareOutline className='text-2xl cursor-pointer' />
+                <div className='absolute group items-center top-14 left-0 md:left-32'>
+                    <p className='text-sm -translate-x-3 bg-gray-600 px-2 py-1 h-fit opacity-0 rounded-md group-hover:opacity-80'>share</p>
+                    <IoShareOutline className='text-4xl cursor-pointer hover:text-green-300 hover:rotate-0 transition-transform duration-200 rotate-180 py-1' />
                 </div>
                 <div className='w-[100px] h-[100px] mt-20'>
                     <Image
@@ -39,8 +70,7 @@ const EggNest = () => {
                                 {social.title === "youtube" && <a href={social.href}><SlSocialYoutube className='text-5xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
                                 {social.title === "facebook" && <a href={social.href}><SlSocialFacebook className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
                                 {social.title === "linkedin" && <a href={social.href}><SlSocialLinkedin className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
-                                {/* change below to github icon */}
-                                {social.title === "github" && <a href={social.href}><SlSocialLinkedin className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                                {social.title === "github" && <a href={social.href}><FiGithub className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
                             </div>
                         )
                     })
@@ -56,10 +86,13 @@ const EggNest = () => {
 
                     ? data.links.map((link, index) => {
                         return (
-                            <div key={index} className="py-4 cursor-pointer hover:text-green-300 hover:scale-x-105 font-mono tracking-widest transition-transform duration-200 w-full bg-gray-700 uppercase font-semibold shadow-md rounded-lg flex items-center justify-center my-2">
-                                <a href={link.href}>
+                            <div key={index} className="py-4 relative cursor-pointer hover:text-green-300 hover:scale-x-105 font-mono tracking-widest transition-transform duration-200 w-full bg-gray-700 uppercase font-semibold shadow-md rounded-lg flex items-center justify-center my-2">
+                                <a id='link' href={link.href}>
                                     {link.title}
                                 </a>
+                                <div onClick={() => { navigator.clipboard.writeText(link.href), copied() }} className='absolute p-2 right-4 text-xl hover:text-yellow-300'>
+                                    <MdOutlineContentCopy />
+                                </div>
                             </div>
                         )
                     })
