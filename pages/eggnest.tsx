@@ -44,9 +44,9 @@ const EggNest = () => {
                             </div>
                         )
                     })
-                    : <div className='w-2/3'>
+                    : <div className='w-full md:w-2/3'>
                         <div className="py-4 cursor-pointer hover:text-green-300 hover:scale-x-105 font-mono tracking-widest transition-transform duration-200 w-full bg-gray-700 uppercase font-semibold shadow-md rounded-lg flex items-center justify-center my-2">
-                            <Link href={"/addsocials"}>Add Socials</Link>
+                            <Link href={"/addsocials"}>add socials</Link>
                         </div>
                     </div>}
             </div>
@@ -83,23 +83,23 @@ const EggNest = () => {
                     </div>}
             </div>
 
-            <div className='absolute flex top-28 group right-5 md:right-16'>
+            {data.socials.length > 0 && <div className='absolute flex top-28 group right-5 md:right-16'>
                 <p className='text-sm bg-gray-600 px-2 py-1 h-fit my-auto mr-2 opacity-0 rounded-md group-hover:opacity-80'>edit socials</p>
                 <div className='bg-gray-700 w-fit mx-auto hover:bg-green-300 hover:text-black hover:shadow-xl hover:scale-105 transition-transform duration-200 hover:rotate-180 rounded-full p-4 cursor-pointer'>
                     <Link href={"/addsocials"}>
                         <CgEditUnmask />
                     </Link>
                 </div>
-            </div>
+            </div>}
 
-            <div className='absolute flex top-10 group right-5 md:right-16'>
+            {data.links.length > 0 && <div className='absolute flex top-10 group right-5 md:right-16'>
                 <p className='text-sm bg-gray-600 px-2 py-1 h-fit my-auto mr-2 opacity-0 rounded-md group-hover:opacity-80'>lay an egg</p>
                 <div className='bg-gray-700 w-fit mx-auto hover:bg-green-300 hover:text-black hover:shadow-xl hover:scale-105 transition-transform duration-200 hover:rotate-180 rounded-full p-4 cursor-pointer'>
                     <Link href={"/layanegg"}>
                         <BsPlusLg />
                     </Link>
                 </div>
-            </div>
+            </div>}
         </div>
     )
 }
