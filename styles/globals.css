@@ -11,4 +11,10 @@ font-family: 'Roboto Mono', monospace; */
 body,
 html {
     font-family: 'Inter', sans-serif;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+body ::-webkit-scrollbar {
+    display: none;
 }

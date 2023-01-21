@@ -87,8 +87,10 @@ const EggNest = () => {
                     ? data.links.map((link, index) => {
                         return (
                             <div key={index} className="py-4 relative cursor-pointer hover:text-green-300 hover:scale-x-105 font-mono tracking-widest transition-transform duration-200 w-full bg-gray-700 uppercase font-semibold shadow-md rounded-lg flex items-center justify-center my-2">
-                                <a id='link' href={link.href}>
-                                    {link.title}
+                                <a className='w-full' id='link' href={link.href}>
+                                    <p className='w-8/12 text-center overflow-x-scroll mx-auto'>
+                                        {link.title}
+                                    </p>
                                 </a>
                                 <div onClick={() => { navigator.clipboard.writeText(link.href), copied() }} className='absolute p-2 right-4 text-xl hover:text-yellow-300'>
                                     <MdOutlineContentCopy />
