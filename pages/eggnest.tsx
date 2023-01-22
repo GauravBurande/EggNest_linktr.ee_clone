@@ -26,6 +26,8 @@ const EggNest = () => {
         });
     }
 
+    const socials: any = data.socials
+
     return (
         <div className='mb-20'>
             <ToastContainer
@@ -56,21 +58,21 @@ const EggNest = () => {
                 </div>
 
                 <div>
-                    <h3 className='text-xl font-bold py-5'>{data.username}</h3>
+                    <h3 className='text-xl font-bold py-5'>@{data.username}</h3>
                 </div>
             </div>
 
             <div id="socials" className="flex items-center justify-center my-5">
-                {data.socials.length > 0
-                    ? data.socials.map((social: any, index: number) => {
+                {Object.keys(socials).length > 0
+                    ? Object.keys(socials).map((social: any, index: number) => {
                         return (
                             <div key={index} className="flex cursor-pointer">
-                                {social.title === "instagram" && <a href={social.href}><SlSocialInstagram className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
-                                {social.title === "twitter" && <a href={social.href}><SlSocialTwitter className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
-                                {social.title === "youtube" && <a href={social.href}><SlSocialYoutube className='text-5xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
-                                {social.title === "facebook" && <a href={social.href}><SlSocialFacebook className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
-                                {social.title === "linkedin" && <a href={social.href}><SlSocialLinkedin className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
-                                {social.title === "github" && <a href={social.href}><FiGithub className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                                {social === 'instagram' && <a href={socials[social]}><SlSocialInstagram className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                                {social === 'twitter' && <a href={socials[social]}><SlSocialTwitter className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                                {social === 'youtube' && <a href={socials[social]}><SlSocialYoutube className='text-5xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                                {social === 'facebook' && <a href={socials[social]}><SlSocialFacebook className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                                {social === 'linkedin' && <a href={socials[social]}><SlSocialLinkedin className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                                {social === 'github' && <a href={socials[social]}><FiGithub className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
                             </div>
                         )
                     })
@@ -118,7 +120,7 @@ const EggNest = () => {
                     </div>}
             </div>
 
-            {data.socials.length > 0 && <div className='absolute flex top-28 group right-5 md:right-16'>
+            {Object.keys(socials).length > 0 && <div className='absolute flex top-28 group right-5 md:right-16'>
                 <p className='text-sm bg-gray-600 px-2 py-1 h-fit my-auto mr-2 opacity-0 rounded-md group-hover:opacity-80'>edit socials</p>
                 <div className='bg-gray-700 w-fit mx-auto hover:bg-green-300 hover:text-black hover:shadow-xl hover:scale-105 transition-transform duration-200 hover:rotate-180 rounded-full p-4 cursor-pointer'>
                     <Link href={"/addsocials"}>

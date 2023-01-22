@@ -1,32 +1,14 @@
 const data = {
-    "username": "@EggNest",
+    "username": "EggNest",
     "avatar": "/eggnest.png",
-    "socials": [
-        {
-            "title": "twitter",
-            "href": "https://twitter.com"
-        },
-        {
-            "title": "facebook",
-            "href": "https://www.facebook.com"
-        },
-        {
-            "title": "instagram",
-            "href": "https://www.instagram.com"
-        },
-        {
-            "title": "linkedin",
-            "href": "https://www.linkedin.com"
-        },
-        {
-            "title": "youtube",
-            "href": "https://www.youtube.com"
-        },
-        {
-            "title": "github",
-            "href": "https://www.github.com"
-        }
-    ],
+    "socials": {
+        "twitter": "https://twitter.com",
+        "facebook": "https://www.facebook.com",
+        "instagram": "https://www.instagram.com",
+        "linkedin": "https://www.linkedin.com",
+        "youtube": "https://www.youtube.com",
+        "github": "https://www.github.com"
+    },
     "links": [
         {
             "title": "twitter",
@@ -53,7 +35,6 @@ const data = {
             "href": "https://www.youtube.com"
         }
     ]
-
 }
 
 //     {

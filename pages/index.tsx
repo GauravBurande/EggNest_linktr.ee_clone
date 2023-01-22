@@ -19,7 +19,7 @@ const Home: NextPage = () => {
         </div>
 
         <div>
-          <h3 className='text-xl font-bold py-5'>{data.username}</h3>
+          <h3 className='text-xl font-bold py-5'>@{data.username}</h3>
         </div>
       </div>
 
