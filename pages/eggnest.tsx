@@ -62,7 +62,7 @@ const EggNest = () => {
 
             <div id="socials" className="flex items-center justify-center my-5">
                 {data.socials.length > 0
-                    ? data.socials.map((social, index) => {
+                    ? data.socials.map((social: any, index: number) => {
                         return (
                             <div key={index} className="flex cursor-pointer">
                                 {social.title === "instagram" && <a href={social.href}><SlSocialInstagram className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
@@ -84,7 +84,7 @@ const EggNest = () => {
             <div id="links" className="flex flex-col md:w-2/3 items-center justify-center mx-auto">
                 {data.links.length > 0
 
-                    ? data.links.map((link, index) => {
+                    ? data.links.map((link: any, index: number) => {
                         return (
                             <div key={index} className="py-4 relative cursor-pointer hover:text-green-300 hover:scale-x-105 font-mono tracking-widest transition-transform duration-200 w-full bg-gray-700 uppercase font-semibold shadow-md rounded-lg flex items-center justify-center my-2">
                                 <a className='w-full' id='link' href={link.href}>
