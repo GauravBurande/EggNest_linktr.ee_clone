@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import data from '../data'
 import Image from 'next/image'
 import { SlSocialInstagram, SlSocialYoutube, SlSocialTwitter, SlSocialFacebook, SlSocialLinkedin } from "react-icons/sl"
@@ -10,8 +10,12 @@ import { MdOutlineContentCopy } from "react-icons/md"
 import Link from 'next/link'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
+import UserContext from '../context/UserContext'
 
 const EggNest = () => {
+
+    const context: any = useContext(UserContext)
+    const { userData } = context;
 
     const copied = () => {
         toast.success('Link copied to clipboard✨', {
@@ -26,7 +30,7 @@ const EggNest = () => {
         });
     }
 
-    const socials: any = data.socials
+    const socials: any = userData.socials
 
     return (
         <div className='mb-20'>
@@ -49,16 +53,16 @@ const EggNest = () => {
                 </div>
                 <div className='w-[100px] h-[100px] mt-20'>
                     <Image
-                        src={data.avatar}
+                        src={userData.avatar}
                         className="rounded-full object-cover w-full h-full"
                         width={100}
                         height={100}
-                        alt={data.username}
+                        alt={userData.username}
                     />
                 </div>
 
                 <div>
-                    <h3 className='text-xl font-bold py-5'>@{data.username}</h3>
+                    <h3 className='text-xl font-bold py-5'>@{userData.username}</h3>
                 </div>
             </div>
 
@@ -84,9 +88,9 @@ const EggNest = () => {
             </div>
 
             <div id="links" className="flex flex-col md:w-2/3 items-center justify-center mx-auto">
-                {data.links.length > 0
+                {userData.links.length > 0
 
-                    ? data.links.map((link: any, index: number) => {
+                    ? userData.links.map((link: any, index: number) => {
                         return (
                             <div key={index} className="py-4 relative cursor-pointer hover:text-green-300 hover:scale-x-105 font-mono tracking-widest transition-transform duration-200 w-full bg-gray-700 uppercase font-semibold shadow-md rounded-lg flex items-center justify-center my-2">
                                 <a className='w-full' id='link' href={link.link}>
@@ -129,7 +133,7 @@ const EggNest = () => {
                 </div>
             </div>}
 
-            {data.links.length > 0 && <div className='absolute flex top-10 group right-5 md:right-16'>
+            {userData.links.length > 0 && <div className='absolute flex top-10 group right-5 md:right-16'>
                 <p className='text-sm bg-gray-600 px-2 py-1 h-fit my-auto mr-2 opacity-0 rounded-md group-hover:opacity-80'>lay an egg</p>
                 <div className='bg-gray-700 w-fit mx-auto hover:bg-green-300 hover:text-black hover:shadow-xl hover:scale-105 transition-transform duration-200 hover:rotate-180 rounded-full p-4 cursor-pointer'>
                     <Link href={"/layanegg"}>

@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import type { AppProps } from 'next/app'
 import Head from 'next/head'
 import Image from 'next/image'
+import UserState from '../context/UserState'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -23,7 +24,9 @@ function MyApp({ Component, pageProps }: AppProps) {
             />
           </div>
           <div className='w-3/4 mx-auto text-white'>
-            <Component {...pageProps} />
+            <UserState>
+              <Component {...pageProps} />
+            </UserState>
           </div>
         </div>
       </div>

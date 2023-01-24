@@ -2,12 +2,12 @@ const data = {
     "username": "EggNest",
     "avatar": "/eggnest.png",
     "socials": {
-        "twitter": "https://twitter.com",
-        "facebook": "https://www.facebook.com",
-        "instagram": "https://www.instagram.com",
-        "linkedin": "https://www.linkedin.com",
-        "youtube": "https://www.youtube.com",
-        "github": "https://www.github.com"
+        // "twitter": "https://twitter.com",
+        // "facebook": "https://www.facebook.com",
+        // "instagram": "https://www.instagram.com",
+        // "linkedin": "https://www.linkedin.com",
+        // "youtube": "https://www.youtube.com",
+        // "github": "https://www.github.com"
     },
     "links": [
         {
