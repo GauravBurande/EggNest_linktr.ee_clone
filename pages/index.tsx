@@ -41,7 +41,7 @@ const Home: NextPage = () => {
         email: user.email,
         avatar: user.photoURL,
         socials: "add socials",
-        links: "Lay an egg"
+        links: "lay an egg"
       })
     })
       .catch((error) => {

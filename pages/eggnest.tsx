@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import Image from 'next/image'
 import { SlSocialInstagram, SlSocialYoutube, SlSocialTwitter, SlSocialFacebook, SlSocialLinkedin } from "react-icons/sl"
 import { BsPlusLg } from "react-icons/bs"
@@ -16,6 +16,12 @@ import data from '../data'
 
 
 const EggNest = () => {
+
+    useEffect(() => {
+        if (!userData) {
+            router.push('/')
+        }
+    }, [])
 
     const context: any = useContext(UserContext)
     const { userData, setUserData } = context;
@@ -37,8 +43,8 @@ const EggNest = () => {
 
     const handleSignOut = () => {
         auth.signOut().then(() => {
-            setUserData()
             router.push('/');
+            setUserData()
         }).catch((error) => {
             alert(error.message)
         })
@@ -64,18 +70,23 @@ const EggNest = () => {
                         <p className='text-sm -translate-x-3 bg-gray-600 px-2 py-1 h-fit opacity-0 rounded-md group-hover:opacity-80'>share</p>
                         <IoShareOutline className='text-4xl cursor-pointer hover:text-green-300 hover:rotate-0 transition-transform duration-200 rotate-180 py-1' />
                     </div>
-                    <div className='w-[100px] h-[100px] mt-20'>
-                        <Image
-                            src={userData.avatar || data.avatar}
-                            className="rounded-full object-cover w-full h-full"
-                            width={100}
-                            height={100}
-                            alt={userData.username}
-                        />
+                    <div className='flex flex-col items-center group'>
+                        <div className='w-[100px] h-[100px] mt-20'>
+                            <Image
+                                src={userData.avatar || data.avatar}
+                                className="rounded-full object-cover w-full h-full"
+                                width={100}
+                                height={100}
+                                alt={userData.username || data.username}
+                            />
+                        </div>
+                        <div onClick={handleSignOut} className='mt-3 bg-gray-600 p-1 text-sm rounded cursor-pointer opacity-0 group-hover:opacity-100 transition-all duration-200'>
+                            <p>Sign Out</p>
+                        </div>
                     </div>
 
                     <div>
-                        <h3 className='text-xl font-bold py-5'>@{userData.username}</h3>
+                        <h3 className='text-xl font-bold py-3'>@{userData.username}</h3>
                     </div>
                 </div>
 
@@ -99,7 +110,7 @@ const EggNest = () => {
                 </div>
 
                 <div id="links" className="flex flex-col md:w-2/3 items-center justify-center mx-auto">
-                    {!(userData.links === "Lay an egg")
+                    {!(userData.links === "lay an egg")
                         ? userData.links.map((link: any, index: number) => {
                             return (
                                 <div key={index} className="py-4 relative cursor-pointer hover:text-green-300 hover:scale-x-105 font-mono tracking-widest transition-transform duration-200 w-full bg-gray-700 uppercase font-semibold shadow-md rounded-lg flex items-center justify-center my-2">
@@ -108,7 +119,7 @@ const EggNest = () => {
                                             {link.title}
                                         </p>
                                     </a>
-                                    <div onClick={() => { navigator.clipboard.writeText(link.href), copied() }} className='absolute p-2 right-4 text-xl hover:text-yellow-300'>
+                                    <div onClick={() => { navigator.clipboard.writeText(link.link), copied() }} className='absolute p-2 right-4 text-xl hover:text-yellow-300'>
                                         <MdOutlineContentCopy />
                                     </div>
                                 </div>
@@ -143,7 +154,7 @@ const EggNest = () => {
                     </div>
                 </div>}
 
-                {!(userData.links === "Lay an egg") && <div className='absolute flex top-10 group right-5 md:right-16'>
+                {!(userData.links === "lay an egg") && <div className='absolute flex top-10 group right-5 md:right-16'>
                     <p className='text-sm bg-gray-600 px-2 py-1 h-fit my-auto mr-2 opacity-0 rounded-md group-hover:opacity-80'>lay an egg</p>
                     <div className='bg-gray-700 w-fit mx-auto hover:bg-green-300 hover:text-black hover:shadow-xl hover:scale-105 transition-transform duration-200 hover:rotate-180 rounded-full p-4 cursor-pointer'>
                         <Link href={"/layanegg"}>

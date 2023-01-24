@@ -1,12 +1,30 @@
-import React, { useState } from 'react'
+import { useRouter } from 'next/router'
+import React, { useState, useContext } from 'react'
+import UserContext from '../context/UserContext'
 
 const LayAnEgg = () => {
 
-    const [linkDetails, setLinkDetails] = useState({ title: "", link: "" })
+    const emptyInputs = { title: "", link: "" }
+    const [linkDetails, setLinkDetails] = useState(emptyInputs)
+
+    const router = useRouter()
 
     const handleOnChange = (e: any) => {
         setLinkDetails({ ...linkDetails, [e.target.name]: e.target.value })
         console.log(linkDetails)
+    }
+
+    const context: any = useContext(UserContext)
+    const { userData, setUserData } = context
+
+    const handleAdd = () => {
+        if (userData.links === "lay an egg") {
+            setUserData({ ...userData, links: [linkDetails] })
+        } else {
+            setUserData({ ...userData, links: [...userData.links, linkDetails] })
+        }
+        console.log({ ...userData, links: linkDetails })
+        router.push('/eggnest')
     }
 
     return (
@@ -25,7 +43,7 @@ const LayAnEgg = () => {
                     </div>
 
                     <div className='mt-10 py-4 w-[50vw]'>
-                        <button className='bg-gray-900 py-4 px-6 capitalize rounded-full font-bold hover:text-green-300 hover:scale-105 transition-transform duration-200 hover:underline hover:decoration-yellow-100'>add</button>
+                        <button onClick={handleAdd} className='bg-gray-900 py-4 px-6 capitalize rounded-full font-bold hover:text-green-300 hover:scale-105 transition-transform duration-200 hover:underline hover:decoration-yellow-100'>add</button>
                     </div>
                 </div>
             </div>
