@@ -17,9 +17,10 @@ const Home: NextPage = () => {
   const router = useRouter();
 
   useEffect(() => {
-    auth.onAuthStateChanged(async () => {
+    auth.onAuthStateChanged(async (userData) => {
       if (userData) {
         router.push('/eggnest')
+        // setUserData(DataFromFirestore)
       }
     })
     // eslint-disable-next-line
@@ -38,10 +39,9 @@ const Home: NextPage = () => {
       setUserData({
         username: randomName,
         email: user.email,
-        uid: user.uid,
         avatar: user.photoURL,
-        socials: {},
-        links: []
+        socials: "add socials",
+        links: "Lay an egg"
       })
     })
       .catch((error) => {

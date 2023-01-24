@@ -1,12 +1,29 @@
-import React, { useState } from 'react'
+import { useRouter } from 'next/router'
+import React, { useState, useContext } from 'react'
+import UserContext from '../context/UserContext'
 
 const AddSocials = () => {
 
-    const [socialDetails, setSocialDetails] = useState({ instagram: "", twitter: "", youtube: "", facebook: "", linkedin: "", github: "" })
+    const router = useRouter()
+
+    const emptyInputs = { instagram: "https://www.instagram.com", twitter: "https://twitter.com", youtube: "https://www.youtube.com", facebook: "https://www.facebook.com", linkedin: "https://www.linkedin.com", github: "https://github.com" }
+    const [socialDetails, setSocialDetails] = useState(emptyInputs)
 
     const handleOnChange = (e: any) => {
         setSocialDetails({ ...socialDetails, [e.target.name]: e.target.value })
-        console.log(socialDetails)
+    }
+
+    const context: any = useContext(UserContext)
+    const { userData, setUserData } = context
+
+    const handleAdd = () => {
+        if (socialDetails == emptyInputs) {
+            setUserData({ ...userData, socials: "add socials" })
+        } else {
+            setUserData({ ...userData, socials: socialDetails })
+        }
+        console.log({ ...userData, socials: socialDetails })
+        router.push('/eggnest')
     }
 
     return (
@@ -44,7 +61,7 @@ const AddSocials = () => {
                     </div>
 
                     <div className='mt-10 py-4 w-[50vw]'>
-                        <button className='bg-gray-900 py-4 px-6 capitalize rounded-full font-bold hover:text-green-300 hover:scale-105 transition-transform duration-200 hover:underline hover:decoration-yellow-100'>add</button>
+                        <button onClick={handleAdd} className='bg-gray-900 py-4 px-6 capitalize rounded-full font-bold hover:text-green-300 hover:scale-105 transition-transform duration-200 hover:underline hover:decoration-yellow-100'>add</button>
                     </div>
                 </div>
             </div>
