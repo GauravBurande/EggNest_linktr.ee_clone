@@ -89,7 +89,7 @@ const EggNest = () => {
                     ? data.links.map((link: any, index: number) => {
                         return (
                             <div key={index} className="py-4 relative cursor-pointer hover:text-green-300 hover:scale-x-105 font-mono tracking-widest transition-transform duration-200 w-full bg-gray-700 uppercase font-semibold shadow-md rounded-lg flex items-center justify-center my-2">
-                                <a className='w-full' id='link' href={link.href}>
+                                <a className='w-full' id='link' href={link.link}>
                                     <p className='w-8/12 text-center overflow-x-scroll mx-auto'>
                                         {link.title}
                                     </p>

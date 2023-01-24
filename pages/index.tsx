@@ -2,8 +2,34 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import data from '../data'
 import { BsGithub } from "react-icons/bs"
+import { signInWithPopup, GithubAuthProvider } from "firebase/auth";
+import { auth, provider } from "../firebase"
 
 const Home: NextPage = () => {
+
+  const handleAuth = async () => {
+    signInWithPopup(auth, provider)
+      .then(async (result) => {
+        // This gives you a GitHub Access Token. You can use it to access the GitHub API.
+        // credential could be null !!!!
+        const credential: any = GithubAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+
+        // The signed-in user info.
+        const user = result.user;
+        console.log("user: ", user)
+      }).catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        alert(errorCode + ": " + errorMessage)
+        // The email of the user's account used.
+        const email = error.customData.email;
+
+        // The AuthCredential type that was used.
+        const credential = GithubAuthProvider.credentialFromError(error);
+      });
+  }
 
   return (
     <div className='flex flex-col items-center justify-center'>
@@ -29,7 +55,7 @@ const Home: NextPage = () => {
       <div id="authenticate" className="flex flex-col bg-gray-700 rounded-lg shadow-lg p-8 my-5">
         <h2>Create <span className='text-green-300'>Nest</span> with your <span className='text-green-300'>GitHub</span> account</h2>
 
-        <div className='text-center flex items-center justify-center space-x-2 text-yellow-100 bg-gray-800 mt-3 cursor-pointer hover:text-green-300 hover:underline decoration-yellow-200 py-3'>
+        <div onClick={handleAuth} className='text-center flex items-center justify-center space-x-2 text-yellow-100 bg-gray-800 mt-3 cursor-pointer hover:text-green-300 hover:underline decoration-yellow-200 py-3'>
           <BsGithub />
           <p>Continue with GitHub</p>
         </div>

@@ -12,27 +12,27 @@ const data = {
     "links": [
         {
             "title": "twitter",
-            "href": "https://twitter.com"
+            "link": "https://twitter.com"
         },
         {
             "title": "facebook",
-            "href": "https://www.facebook.com"
+            "link": "https://www.facebook.com"
         },
         {
             "title": "instagram",
-            "href": "https://www.instagram.com"
+            "link": "https://www.instagram.com"
         },
         {
             "title": "linkedin",
-            "href": "https://www.linkedin.com"
+            "link": "https://www.linkedin.com"
         },
         {
             "title": "github",
-            "href": "https://github.com"
+            "link": "https://github.com"
         },
         {
             "title": "youtube",
-            "href": "https://www.youtube.com"
+            "link": "https://www.youtube.com"
         }
     ]
 }
