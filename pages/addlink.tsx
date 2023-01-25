@@ -17,7 +17,6 @@ const LayAnEgg = () => {
 
     const handleOnChange = (e: any) => {
         setLinkDetails({ ...linkDetails, [e.target.name]: e.target.value })
-        console.log(linkDetails)
     }
 
     const context: any = useContext(UserContext)
@@ -34,7 +33,6 @@ const LayAnEgg = () => {
             const userRef = collection(db, "userData");
             await setDoc(doc(userRef, userData.email), dataOfUser)
         }
-        console.log({ ...userData, links: linkDetails })
         router.push('/eggnest')
     }
 

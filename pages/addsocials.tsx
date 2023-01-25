@@ -22,8 +22,6 @@ const AddSocials = () => {
     const { userData } = context
     let dataOfUser = userData
 
-    console.log(dataOfUser)
-
     const handleAdd = async () => {
         if (socialDetails == emptyInputs) {
             dataOfUser = { ...userData, socials: 0 }
@@ -34,7 +32,6 @@ const AddSocials = () => {
             const userRef = collection(db, "userData");
             await setDoc(doc(userRef, userData.email), dataOfUser)
         }
-        // console.log({ ...userData, socials: socialDetails })
         router.push('/eggnest')
     }
 

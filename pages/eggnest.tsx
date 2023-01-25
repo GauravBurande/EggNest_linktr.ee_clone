@@ -4,7 +4,6 @@ import { SlSocialInstagram, SlSocialYoutube, SlSocialTwitter, SlSocialFacebook, 
 import { BsPlusLg } from "react-icons/bs"
 import { CgEditUnmask } from "react-icons/cg"
 import { FiGithub } from "react-icons/fi"
-import { IoShareOutline } from "react-icons/io5"
 import { MdOutlineContentCopy } from "react-icons/md"
 import Link from 'next/link'
 import { toast, ToastContainer } from 'react-toastify'
@@ -33,7 +32,6 @@ const EggNest = () => {
                 const docRef = doc(db, 'userData', userEmail)
                 const docSnap = await getDoc(docRef)
                 if (docSnap.exists()) {
-                    console.log("Document data:", docSnap.data());
                     const dataOfUser = docSnap.data()
                     setUserData(dataOfUser)
                 } else {
