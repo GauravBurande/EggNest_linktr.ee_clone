@@ -26,7 +26,7 @@ const AddSocials = () => {
 
     const handleAdd = async () => {
         if (socialDetails == emptyInputs) {
-            dataOfUser = { ...userData, socials: "add socials" }
+            dataOfUser = { ...userData, socials: 0 }
             const userRef = collection(db, "userData");
             await setDoc(doc(userRef, userData.email), dataOfUser)
         } else {

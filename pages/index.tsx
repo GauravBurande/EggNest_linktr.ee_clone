@@ -47,7 +47,7 @@ const Home: NextPage = () => {
             username: randomName,
             email: user.email,
             avatar: user.photoURL,
-            socials: "add socials",
+            socials: 0,
             links: 0
           }
           localStorage.setItem('userEmail', user.email)
@@ -89,7 +89,7 @@ const Home: NextPage = () => {
             username: randomName,
             email: user.email,
             avatar: user.photoURL,
-            socials: "add socials",
+            socials: 0,
             links: 0
           }
 

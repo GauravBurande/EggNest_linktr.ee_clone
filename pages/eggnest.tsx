@@ -112,15 +112,15 @@ const EggNest = () => {
                 </div>
 
                 <div id="socials" className="flex items-center justify-center my-5">
-                    {!(userData.socials === "add socials")
+                    {!(userData.socials == 0)
                         ?
                         <div className="flex items-center justify-center cursor-pointer">
-                            {userData.socials["instagram"] != "" && <a href={userData.socials["instagram"]}><SlSocialInstagram className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
-                            {userData.socials["twitter"] != "" && <a href={userData.socials["twitter"]}><SlSocialTwitter className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
-                            {userData.socials["youtube"] != "" && <a href={userData.socials["youtube"]}><SlSocialYoutube className='text-5xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
-                            {userData.socials["facebook"] != "" && <a href={userData.socials["facebook"]}><SlSocialFacebook className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
-                            {userData.socials["linkedin"] != "" && <a href={userData.socials["linkedin"]}><SlSocialLinkedin className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
-                            {userData.socials["github"] != "" && <a href={userData.socials["github"]}><FiGithub className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                            {userData.socials["instagram"] && <a href={userData.socials["instagram"]}><SlSocialInstagram className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                            {userData.socials["twitter"] && <a href={userData.socials["twitter"]}><SlSocialTwitter className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                            {userData.socials["youtube"] && <a href={userData.socials["youtube"]}><SlSocialYoutube className='text-5xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                            {userData.socials["facebook"] && <a href={userData.socials["facebook"]}><SlSocialFacebook className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                            {userData.socials["linkedin"] && <a href={userData.socials["linkedin"]}><SlSocialLinkedin className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                            {userData.socials["github"] && <a href={userData.socials["github"]}><FiGithub className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
                         </div>
 
                         : <div className='w-full md:w-2/3'>
@@ -166,7 +166,7 @@ const EggNest = () => {
                         </div>}
                 </div>
 
-                {!(userData.socials === "add socials") && <div className='absolute flex top-28 group right-5 md:right-16'>
+                {!(userData.socials == 0) && <div className='absolute flex top-28 group right-5 md:right-16'>
                     <p className='text-sm bg-gray-600 px-2 py-1 h-fit my-auto mr-2 opacity-0 rounded-md group-hover:opacity-80'>edit socials</p>
                     <div className='bg-gray-700 w-fit mx-auto hover:bg-green-300 hover:text-black hover:shadow-xl hover:scale-105 transition-transform duration-200 hover:rotate-180 rounded-full p-4 cursor-pointer'>
                         <Link href={"/addsocials"}>
@@ -185,7 +185,7 @@ const EggNest = () => {
                 </div>}
             </div>
                 : <div className='flex items-center w-full h-[100vh] animate-pulse justify-center'>
-                    <p className='font-bold text-2xl text-green-300'>please wait...</p>
+                    <p className='font-bold text-3xl text-green-300 underline decoration-yellow-300'>please wait or reload the page</p>
                 </div>
             }
         </div>
