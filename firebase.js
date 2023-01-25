@@ -3,7 +3,7 @@ import { getFirestore } from 'firebase/firestore/lite';
 import { getStorage } from "firebase/storage";
 import { getAnalytics } from "firebase/analytics";
 
-import { getAuth, GithubAuthProvider } from "firebase/auth";
+import { getAuth, GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -23,9 +23,10 @@ if (firebaseApp.name && typeof window !== 'undefined') {
 }
 const db = getFirestore(firebaseApp);
 const auth = getAuth(firebaseApp);
-const provider = new GithubAuthProvider();
+const GitHubProvider = new GithubAuthProvider();
+const GoogleProvider = new GoogleAuthProvider();
 
 const storage = getStorage();
 
-export { analytics, storage, auth, provider };
+export { analytics, storage, auth, GitHubProvider, GoogleProvider };
 export default db;

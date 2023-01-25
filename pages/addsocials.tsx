@@ -1,28 +1,40 @@
 import { useRouter } from 'next/router'
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import UserContext from '../context/UserContext'
+import { collection, doc, setDoc } from 'firebase/firestore/lite';
+import db from '../firebase';
 
 const AddSocials = () => {
+    const emptyInputs = { instagram: "", twitter: "", youtube: "", facebook: "", linkedin: "", github: "" }
+    const [socialDetails, setSocialDetails] = useState(emptyInputs)
+
+    useEffect(() => {
+        setSocialDetails(userData.socials)
+    }, [])
 
     const router = useRouter()
-
-    const emptyInputs = { instagram: "https://www.instagram.com", twitter: "https://twitter.com", youtube: "https://www.youtube.com", facebook: "https://www.facebook.com", linkedin: "https://www.linkedin.com", github: "https://github.com" }
-    const [socialDetails, setSocialDetails] = useState(emptyInputs)
 
     const handleOnChange = (e: any) => {
         setSocialDetails({ ...socialDetails, [e.target.name]: e.target.value })
     }
 
     const context: any = useContext(UserContext)
-    const { userData, setUserData } = context
+    const { userData } = context
+    let dataOfUser = userData
 
-    const handleAdd = () => {
+    console.log(dataOfUser)
+
+    const handleAdd = async () => {
         if (socialDetails == emptyInputs) {
-            setUserData({ ...userData, socials: "add socials" })
+            dataOfUser = { ...userData, socials: "add socials" }
+            const userRef = collection(db, "userData");
+            await setDoc(doc(userRef, userData.email), dataOfUser)
         } else {
-            setUserData({ ...userData, socials: socialDetails })
+            dataOfUser = { ...userData, socials: socialDetails }
+            const userRef = collection(db, "userData");
+            await setDoc(doc(userRef, userData.email), dataOfUser)
         }
-        console.log({ ...userData, socials: socialDetails })
+        // console.log({ ...userData, socials: socialDetails })
         router.push('/eggnest')
     }
 

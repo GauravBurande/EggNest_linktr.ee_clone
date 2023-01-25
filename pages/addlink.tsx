@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router'
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import UserContext from '../context/UserContext'
+import { collection, doc, setDoc } from 'firebase/firestore/lite';
+import db from '../firebase';
 
 const LayAnEgg = () => {
 
@@ -9,6 +11,10 @@ const LayAnEgg = () => {
 
     const router = useRouter()
 
+    useEffect(() => {
+        setLinkDetails(userData.links)
+    }, [])
+
     const handleOnChange = (e: any) => {
         setLinkDetails({ ...linkDetails, [e.target.name]: e.target.value })
         console.log(linkDetails)
@@ -16,12 +22,17 @@ const LayAnEgg = () => {
 
     const context: any = useContext(UserContext)
     const { userData, setUserData } = context
+    let dataOfUser = userData
 
-    const handleAdd = () => {
-        if (userData.links === "lay an egg") {
-            setUserData({ ...userData, links: [linkDetails] })
+    const handleAdd = async () => {
+        if (dataOfUser.links == 0) {
+            dataOfUser = { ...userData, links: [linkDetails] }
+            const userRef = collection(db, "userData");
+            await setDoc(doc(userRef, userData.email), dataOfUser)
         } else {
-            setUserData({ ...userData, links: [...userData.links, linkDetails] })
+            dataOfUser = { ...userData, links: [...userData.links, linkDetails] }
+            const userRef = collection(db, "userData");
+            await setDoc(doc(userRef, userData.email), dataOfUser)
         }
         console.log({ ...userData, links: linkDetails })
         router.push('/eggnest')
@@ -31,7 +42,7 @@ const LayAnEgg = () => {
         <div>
             <div className='w-full h-[100vh] flex flex-col items-center justify-center'>
                 <div className=''>
-                    <h2 className='text-3xl font-bold py-3'>Lay your <span className='text-green-300'>Egg</span> below</h2>
+                    <h2 className='text-3xl font-bold py-3'>Add your <span className='text-green-300'>Link</span> below</h2>
                 </div>
 
                 <div className='py-12 px-12 mt-5 bg-gray-800 rounded-md shadow-lg'>

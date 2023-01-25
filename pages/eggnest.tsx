@@ -10,21 +10,41 @@ import Link from 'next/link'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css';
 import UserContext from '../context/UserContext'
-import { auth } from "../firebase"
+import db, { auth } from "../firebase"
 import { useRouter } from 'next/router'
 import data from '../data'
+import { doc, getDoc } from 'firebase/firestore/lite';
+
 
 
 const EggNest = () => {
 
-    useEffect(() => {
-        if (!userData) {
-            router.push('/')
-        }
-    }, [])
-
     const context: any = useContext(UserContext)
     const { userData, setUserData } = context;
+
+    const userEmail = typeof window !== "undefined" && window.localStorage.getItem('userEmail')
+
+    useEffect(() => {
+
+        if (!userEmail) {
+            router.push('/')
+        } else {
+            const fetchUserData = async () => {
+                const docRef = doc(db, 'userData', userEmail)
+                const docSnap = await getDoc(docRef)
+                if (docSnap.exists()) {
+                    console.log("Document data:", docSnap.data());
+                    const dataOfUser = docSnap.data()
+                    setUserData(dataOfUser)
+                } else {
+                    // doc.data() will be undefined in this case
+                    console.log("No such document!");
+                }
+            }
+            fetchUserData()
+        }
+    }, [userEmail])
+
 
     const router = useRouter()
 
@@ -64,12 +84,13 @@ const EggNest = () => {
                 pauseOnHover
                 theme="dark"
             />
-            {userData && <div className="w-full">
+            {userData ? <div className="w-full">
                 <div id="profileCard" className="relative flex justify-center items-center flex-col">
-                    <div className='absolute group items-center top-14 left-0 md:left-32'>
+                    {/* <div className='absolute group items-center top-14 left-0 md:left-32'>
                         <p className='text-sm -translate-x-3 bg-gray-600 px-2 py-1 h-fit opacity-0 rounded-md group-hover:opacity-80'>share</p>
                         <IoShareOutline className='text-4xl cursor-pointer hover:text-green-300 hover:rotate-0 transition-transform duration-200 rotate-180 py-1' />
-                    </div>
+                    </div> */}
+
                     <div className='flex flex-col items-center group'>
                         <div className='w-[100px] h-[100px] mt-20'>
                             <Image
@@ -94,12 +115,12 @@ const EggNest = () => {
                     {!(userData.socials === "add socials")
                         ?
                         <div className="flex items-center justify-center cursor-pointer">
-                            {userData.socials["instagram"] != "https://www.instagram.com" && <a href={userData.socials["instagram"]}><SlSocialInstagram className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
-                            {userData.socials["twitter"] != "https://twitter.com" && <a href={userData.socials["twitter"]}><SlSocialTwitter className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
-                            {userData.socials["youtube"] != "https://www.youtube.com" && <a href={userData.socials["youtube"]}><SlSocialYoutube className='text-5xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
-                            {userData.socials["facebook"] != "https://www.facebook.com" && <a href={userData.socials["facebook"]}><SlSocialFacebook className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
-                            {userData.socials["linkedin"] != "https://www.linkedin.com" && <a href={userData.socials["linkedin"]}><SlSocialLinkedin className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
-                            {userData.socials["github"] != "https://github.com" && <a href={userData.socials["github"]}><FiGithub className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                            {userData.socials["instagram"] != "" && <a href={userData.socials["instagram"]}><SlSocialInstagram className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                            {userData.socials["twitter"] != "" && <a href={userData.socials["twitter"]}><SlSocialTwitter className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                            {userData.socials["youtube"] != "" && <a href={userData.socials["youtube"]}><SlSocialYoutube className='text-5xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                            {userData.socials["facebook"] != "" && <a href={userData.socials["facebook"]}><SlSocialFacebook className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                            {userData.socials["linkedin"] != "" && <a href={userData.socials["linkedin"]}><SlSocialLinkedin className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
+                            {userData.socials["github"] != "" && <a href={userData.socials["github"]}><FiGithub className='text-4xl hover:scale-105 mx-2 px-1 hover:text-green-300 transition-transform duration-200' /></a>}
                         </div>
 
                         : <div className='w-full md:w-2/3'>
@@ -110,7 +131,7 @@ const EggNest = () => {
                 </div>
 
                 <div id="links" className="flex flex-col md:w-2/3 items-center justify-center mx-auto">
-                    {!(userData.links === "lay an egg")
+                    {!(userData.links == 0)
                         ? userData.links.map((link: any, index: number) => {
                             return (
                                 <div key={index} className="py-4 relative cursor-pointer hover:text-green-300 hover:scale-x-105 font-mono tracking-widest transition-transform duration-200 w-full bg-gray-700 uppercase font-semibold shadow-md rounded-lg flex items-center justify-center my-2">
@@ -140,7 +161,7 @@ const EggNest = () => {
                                 There are no<span className='text-green-300 px-1'>Eggs</span> in your <span className='text-green-300 px-1'>Nest</span>
                             </div>
                             <div className="py-4 cursor-pointer hover:text-green-300 hover:scale-x-105 font-mono tracking-widest transition-transform duration-200 w-full bg-gray-700 uppercase font-semibold shadow-md rounded-lg flex items-center justify-center my-2">
-                                <Link href={"/layanegg"}>Lay an egg</Link>
+                                <Link href={"/addlink"}>Add a Link</Link>
                             </div>
                         </div>}
                 </div>
@@ -154,15 +175,19 @@ const EggNest = () => {
                     </div>
                 </div>}
 
-                {!(userData.links === "lay an egg") && <div className='absolute flex top-10 group right-5 md:right-16'>
-                    <p className='text-sm bg-gray-600 px-2 py-1 h-fit my-auto mr-2 opacity-0 rounded-md group-hover:opacity-80'>lay an egg</p>
+                {!(userData.links == 0) && <div className='absolute flex top-10 group right-5 md:right-16'>
+                    <p className='text-sm bg-gray-600 px-2 py-1 h-fit my-auto mr-2 opacity-0 rounded-md group-hover:opacity-80'>add a link</p>
                     <div className='bg-gray-700 w-fit mx-auto hover:bg-green-300 hover:text-black hover:shadow-xl hover:scale-105 transition-transform duration-200 hover:rotate-180 rounded-full p-4 cursor-pointer'>
-                        <Link href={"/layanegg"}>
+                        <Link href={"/addlink"}>
                             <BsPlusLg />
                         </Link>
                     </div>
                 </div>}
-            </div>}
+            </div>
+                : <div className='flex items-center w-full h-[100vh] animate-pulse justify-center'>
+                    <p className='font-bold text-2xl text-green-300'>please wait...</p>
+                </div>
+            }
         </div>
     )
 }
