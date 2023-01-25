@@ -183,7 +183,7 @@ const EggNest = () => {
                 </div>}
             </div>
                 : <div className='flex items-center w-full h-[100vh] animate-pulse justify-center'>
-                    <p className='font-bold text-3xl text-green-300 underline decoration-yellow-300'>please wait or reload the page</p>
+                    <p className='font-bold text-3xl text-green-300 underline decoration-yellow-300 text-center'>please wait or reload the page</p>
                 </div>
             }
         </div>

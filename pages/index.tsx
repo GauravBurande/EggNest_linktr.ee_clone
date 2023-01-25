@@ -46,6 +46,7 @@ const Home: NextPage = () => {
           const dataofuser = {
             username: randomName,
             email: user.email,
+            phone: user.phoneNumber,
             avatar: user.photoURL,
             socials: 0,
             links: 0
@@ -88,6 +89,7 @@ const Home: NextPage = () => {
           const dataofuser = {
             username: randomName,
             email: user.email,
+            phone: user.phoneNumber,
             avatar: user.photoURL,
             socials: 0,
             links: 0
