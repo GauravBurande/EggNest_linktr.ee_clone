@@ -61,6 +61,7 @@ const EggNest = () => {
 
     const handleSignOut = () => {
         auth.signOut().then(() => {
+            localStorage.removeItem('userEmail')
             router.push('/');
             setUserData()
         }).catch((error) => {
