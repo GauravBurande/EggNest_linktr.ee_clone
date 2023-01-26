@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useState, useContext } from 'react'
 import UserContext from '../context/UserContext'
 import { collection, doc, setDoc } from 'firebase/firestore/lite';
 import db from '../firebase';
@@ -10,10 +10,6 @@ const LayAnEgg = () => {
     const [linkDetails, setLinkDetails] = useState(emptyInputs)
 
     const router = useRouter()
-
-    useEffect(() => {
-        setLinkDetails(userData.links)
-    }, [])
 
     const handleOnChange = (e: any) => {
         setLinkDetails({ ...linkDetails, [e.target.name]: e.target.value })
