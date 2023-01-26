@@ -24,25 +24,23 @@ const EggNest = () => {
     const userEmail = typeof window !== "undefined" && window.localStorage.getItem('userEmail')
 
     useEffect(() => {
-
         if (!userEmail) {
             router.push('/')
         } else {
             const fetchUserData = async () => {
+                console.log("fetching data...")
                 const docRef = doc(db, 'userData', userEmail)
                 const docSnap = await getDoc(docRef)
                 if (docSnap.exists()) {
                     const dataOfUser = docSnap.data()
                     setUserData(dataOfUser)
                 } else {
-                    // doc.data() will be undefined in this case
-                    console.log("No such document!");
+                    console.log("no such document")
                 }
             }
             fetchUserData()
         }
-    }, [userEmail])
-
+    }, [])
 
     const router = useRouter()
 
