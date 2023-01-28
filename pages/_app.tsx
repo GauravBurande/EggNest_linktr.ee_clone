@@ -26,6 +26,9 @@ function MyApp({ Component, pageProps }: AppProps) {
           <div className='w-3/4 mx-auto text-white'>
             <UserState>
               <Component {...pageProps} />
+              <div className='flex justify-center'>
+                <p className='text-center absolute -bottom-11'>Built with <span className='text-red-500'>❤</span> by <a href="https://twitter.com/gauravvan" className='text-green-300 hover:underline decoration-yellow-300'>@gauravvan</a></p>
+              </div>
             </UserState>
           </div>
         </div>
