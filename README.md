@@ -1,10 +1,10 @@
-I built this linktr.ee clone using
-*NextJS
-*ContextAPI
-*Firebase
-*TailwindCSS.
+## I built this linktr.ee clone using
+* NextJS
+* ContextAPI
+* Firebase
+* TailwindCSS.
 
-You can visit the webapp here: [eggnest.netlify.app](https://eggnest.netlify.app/)
+### You can visit the webapp here: [eggnest.netlify.app](https://eggnest.netlify.app/)
 
 I just saw a video from youtube making linktree ui clone, so I decided to build the linktree clone with all priority-zero features.
 This is one of my fav project till now.I'm still fixing some bugs.
