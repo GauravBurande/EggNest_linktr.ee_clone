@@ -52,6 +52,10 @@ const LayAnEgg = () => {
                     </div>
                 </div>
             </div>
+
+            <div className='flex justify-center'>
+                <p className='text-center absolute bottom-11'>Built with <span className='text-red-500'>❤</span> by <a href="https://twitter.com/gauravvan" className='text-green-300 hover:underline decoration-yellow-300'>@gauravvan</a></p>
+            </div>
         </div>
     )
 }

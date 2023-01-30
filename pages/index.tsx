@@ -4,7 +4,7 @@ import data from '../data'
 import { BsGithub, BsGoogle } from "react-icons/bs"
 import { signInWithPopup, GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import db, { auth, GitHubProvider, GoogleProvider } from "../firebase"
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import UserContext from '../context/UserContext';
 import { useRouter } from 'next/router';
 import { collection, doc, setDoc, getDoc } from 'firebase/firestore/lite';
@@ -16,6 +16,8 @@ const Home: NextPage = () => {
 
   const router = useRouter();
 
+  const [loading, setLoading] = useState(false)
+
   const userEmail = typeof window !== "undefined" && window.localStorage.getItem('userEmail')
 
   useEffect(() => {
@@ -26,6 +28,7 @@ const Home: NextPage = () => {
 
   const handleGithubAuth = async () => {
     signInWithPopup(auth, GitHubProvider).then(async (result) => {
+      setLoading(true)
       // credentials could be null
       const credential: any = GithubAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
@@ -59,6 +62,7 @@ const Home: NextPage = () => {
       }
     })
       .catch((error) => {
+        setLoading(false);
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorCode + ": " + errorMessage)
@@ -70,7 +74,7 @@ const Home: NextPage = () => {
   }
   const handleGoogleAuth = async () => {
     signInWithPopup(auth, GoogleProvider).then(async (result) => {
-
+      setLoading(true)
       const credential: any = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user: any = result.user;
@@ -102,6 +106,7 @@ const Home: NextPage = () => {
       }
     })
       .catch((error) => {
+        setLoading(false);
         const errorCode = error.code;
         const errorMessage = error.message;
         alert(errorCode + ": " + errorMessage)
@@ -114,7 +119,7 @@ const Home: NextPage = () => {
 
   return (
     <div >
-      {!userEmail ? <div className='flex flex-col items-center justify-center'>
+      {!loading ? <div className='flex flex-col items-center justify-center'>
         <div id="profileCard" className="flex justify-center items-center flex-col">
           <div className='w-[100px] h-[100px] mt-10 md:mt-24'>
             <Image
@@ -145,6 +150,9 @@ const Home: NextPage = () => {
             <BsGoogle />
             <p>Continue with Google</p>
           </div>
+        </div>
+        <div className='flex justify-center'>
+          <p className='text-center absolute bottom-11'>Built with <span className='text-red-500'>❤</span> by <a href="https://twitter.com/gauravvan" className='text-green-300 hover:underline decoration-yellow-300'>@gauravvan</a></p>
         </div>
       </div>
         : <div className='flex items-center w-full h-[100vh] animate-pulse justify-center'>

@@ -11,6 +11,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>EggNest</title>
         <link rel="icon" href="/favicon.ico" />
         <base target='_blank' />
+
+        <meta name="keywords" content="linkfree, linktree, open source, eddiehub, eggnest, gaurav burande, linkfree clone" />
+
+        <meta property="twitter:card" content="eggnest" />
+        <meta property="twitter:url" content="https://eggnest.netlify.app/" />
+        <meta property="twitter:title" content="Eggnest - a linktree clone" />
+        <meta property="twitter:description" content="Add your unique Links and socials." />
+        <meta property="twitter:image" content="https://github.com/GauravBurande/EggNest_linktr.ee_clone/blob/main/public/eggnest.png" />
       </Head>
       <div className='flex flex-col h-[100vh]'>
         <div className='w-full relative min-h-[100vh] h-full box-border flex flex-col'>
@@ -26,9 +34,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           <div className='w-3/4 mx-auto text-white'>
             <UserState>
               <Component {...pageProps} />
-              <div className='flex justify-center'>
-                <p className='text-center absolute -bottom-11'>Built with <span className='text-red-500'>❤</span> by <a href="https://twitter.com/gauravvan" className='text-green-300 hover:underline decoration-yellow-300'>@gauravvan</a></p>
-              </div>
             </UserState>
           </div>
         </div>

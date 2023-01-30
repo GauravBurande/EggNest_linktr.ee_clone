@@ -121,9 +121,11 @@ const EggNest = () => {
                         </div>
 
                         : <div className='w-full md:w-2/3'>
-                            <div className="py-4 cursor-pointer hover:text-green-300 hover:scale-x-105 font-mono tracking-widest transition-transform duration-200 w-full bg-gray-700 uppercase font-semibold shadow-md rounded-lg flex items-center justify-center my-2">
-                                <Link href={"/addsocials"}>add socials</Link>
-                            </div>
+                            <Link href={"/addsocials"}>
+                                <div className="py-4 cursor-pointer hover:text-green-300 hover:scale-x-105 font-mono tracking-widest transition-transform duration-200 w-full bg-gray-700 uppercase font-semibold shadow-md rounded-lg flex items-center justify-center my-2">
+                                    add socials
+                                </div>
+                            </Link>
                         </div>}
                 </div>
 
@@ -157,9 +159,11 @@ const EggNest = () => {
                             <div className='flex justify-center items-center text-sm py-3'>
                                 There are no<span className='text-green-300 px-1'>Eggs</span> in your <span className='text-green-300 px-1'>Nest</span>
                             </div>
-                            <div className="py-4 cursor-pointer hover:text-green-300 hover:scale-x-105 font-mono tracking-widest transition-transform duration-200 w-full bg-gray-700 uppercase font-semibold shadow-md rounded-lg flex items-center justify-center my-2">
-                                <Link href={"/addlink"}>Add a Link</Link>
-                            </div>
+                            <Link href={"/addlink"}>
+                                <div className="py-4 cursor-pointer hover:text-green-300 hover:scale-x-105 font-mono tracking-widest transition-transform duration-200 w-full bg-gray-700 uppercase font-semibold shadow-md rounded-lg flex items-center justify-center my-2">
+                                    Add a Link
+                                </div>
+                            </Link>
                         </div>}
                 </div>
 
@@ -185,6 +189,9 @@ const EggNest = () => {
                     <p className='font-bold text-3xl text-green-300 underline decoration-yellow-300 text-center'>please wait or reload the page</p>
                 </div>
             }
+            <div className='flex justify-center'>
+                <p className='text-center absolute -bottom-11'>Built with <span className='text-red-500'>❤</span> by <a href="https://twitter.com/gauravvan" className='text-green-300 hover:underline decoration-yellow-300'>@gauravvan</a></p>
+            </div>
         </div>
     )
 }

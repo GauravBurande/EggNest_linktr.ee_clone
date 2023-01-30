@@ -36,7 +36,7 @@ const AddSocials = () => {
     }
 
     return (
-        <div>
+        <div className='w-full'>
             <div className='w-full h-[100vh]'>
                 <div className=' flex flex-col items-center justify-center'>
                     <h2 className='text-3xl mt-4 font-bold py-3'>Add your <span className='text-green-300'>Socials</span> below</h2>
@@ -73,6 +73,10 @@ const AddSocials = () => {
                         <button onClick={handleAdd} className='bg-gray-900 py-4 px-6 capitalize rounded-full font-bold hover:text-green-300 hover:scale-105 transition-transform duration-200 hover:underline hover:decoration-yellow-100'>update</button>
                     </div>
                 </div>
+            </div>
+
+            <div className='flex justify-center'>
+                <p className='text-center absolute -bottom-44'>Built with <span className='text-red-500'>❤</span> by <a href="https://twitter.com/gauravvan" className='text-green-300 hover:underline decoration-yellow-300'>@gauravvan</a></p>
             </div>
         </div>
     )
