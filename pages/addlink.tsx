@@ -16,7 +16,7 @@ const LayAnEgg = () => {
     }
 
     const context: any = useContext(UserContext)
-    const { userData, setUserData } = context
+    const { userData } = context
     let dataOfUser = userData
 
     const handleAdd = async () => {
@@ -48,7 +48,7 @@ const LayAnEgg = () => {
                     </div>
 
                     <div className='mt-10 py-4 w-[50vw]'>
-                        <button onClick={handleAdd} className='bg-gray-900 py-4 px-6 capitalize rounded-full font-bold hover:text-green-300 hover:scale-105 transition-transform duration-200 hover:underline hover:decoration-yellow-100'>add</button>
+                        <button onClick={handleAdd} className='bg-gray-900 py-4 px-6 capitalize rounded-full font-bold hover:text-green-300 hover:scale-105 transition-transform duration-200 hover:underline hover:decoration-yellow-100' disabled={linkDetails == emptyInputs}>add</button>
                     </div>
                 </div>
             </div>
