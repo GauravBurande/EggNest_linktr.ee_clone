@@ -11,6 +11,7 @@ import { collection, doc, setDoc, getDoc } from 'firebase/firestore/lite';
 
 const Home: NextPage = () => {
 
+  // TODO: declare type of context
   const context: any = useContext(UserContext)
   const { userData } = context;
 
@@ -30,6 +31,7 @@ const Home: NextPage = () => {
     signInWithPopup(auth, GitHubProvider).then(async (result) => {
       setLoading(true)
       // credentials could be null
+            // TODO: declare types of credential and user
       const credential: any = GithubAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
 
@@ -75,6 +77,7 @@ const Home: NextPage = () => {
   const handleGoogleAuth = async () => {
     signInWithPopup(auth, GoogleProvider).then(async (result) => {
       setLoading(true)
+      // TODO: declare types of credential and user
       const credential: any = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
       const user: any = result.user;

@@ -14,10 +14,11 @@ const AddSocials = () => {
 
     const router = useRouter()
 
-    const handleOnChange = (e: any) => {
+    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSocialDetails({ ...socialDetails, [e.target.name]: e.target.value })
     }
 
+    // TODO: declare type of context
     const context: any = useContext(UserContext)
     const { userData } = context
     let dataOfUser = userData
