@@ -14,10 +14,13 @@ import { useRouter } from 'next/router'
 import data from '../data'
 import { doc, getDoc } from 'firebase/firestore/lite';
 
-
+type Link = {
+    title: string,
+    link: string
+}
 
 const EggNest = () => {
-
+    // TODO: declare type of context
     const context: any = useContext(UserContext)
     const { userData, setUserData } = context;
 
@@ -131,7 +134,7 @@ const EggNest = () => {
 
                 <div id="links" className="flex flex-col md:w-2/3 items-center justify-center mx-auto">
                     {!(userData.links == 0)
-                        ? userData.links.map((link: any, index: number) => {
+                        ? userData.links.map((link: Link, index: number) => {
                             return (
                                 <div key={index} className="py-4 relative cursor-pointer hover:text-green-300 hover:scale-x-105 font-mono tracking-widest transition-transform duration-200 w-full bg-gray-700 uppercase font-semibold shadow-md rounded-lg flex items-center justify-center my-2">
                                     <a className='w-full' id='link' href={link.link}>

@@ -11,10 +11,11 @@ const LayAnEgg = () => {
 
     const router = useRouter()
 
-    const handleOnChange = (e: any) => {
+    const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setLinkDetails({ ...linkDetails, [e.target.name]: e.target.value })
     }
 
+    // TODO: declare type of context
     const context: any = useContext(UserContext)
     const { userData } = context
     let dataOfUser = userData
